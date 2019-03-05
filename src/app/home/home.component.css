@@ -1,0 +1,36 @@
+.main
+{
+    padding: 50px 30px 200px 500px;
+    background-color: lightgray;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif
+}
+.inp
+{
+    width: 300px;
+}
+.btn
+{
+    height: 50px;
+    width: 100px;
+    background-color:gray;
+    font-size: 20px;
+    font-style: bold;
+}
+li
+{
+   padding-top: 15px;
+}
+.ud
+{
+    height: 30px;
+    width: 100px;
+    background-color:gray;
+    font-size: 15px;
+    font-style: bold;
+}
+table
+{
+    width:500px;
+    background-color: white;
+}
