@@ -1,26 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
+import { Logininfo } from '../loginstore/logininfo.model';
+import { Store } from '@ngrx/store';
+import { AppState } from '../loginstore/logininfo.state';
 
+//import { reducer } from '../loginstore/loginstateaction.action';
 @Component({
   selector: 'app-ngnav',
   templateUrl: './ngnav.component.html',
   styleUrls: ['./ngnav.component.css']
 })
 export class NgnavComponent implements OnInit {
-
-  constructor(private auth:AuthService,public route:Router) { 
-    this.username=this.auth.username;
-      
+  constructor(private auth:AuthService,public route:Router,public store:Store<AppState>) { 
   }
-  display:boolean=true;
-  public username='';
-  ngOnInit() {
-     
-      if( !localStorage.getItem('token')) {
-        this.display = false;
-      }
-      
+  
+  ngOnInit() {      
+    this.store.select('login').subscribe( data => {
+      console.log(data);
+    });
   }
 
   signOut()

@@ -33,12 +33,12 @@
 
     </div>
     <div >          
-          <table mat-table border="2">
+          <!-- <table mat-table border="2">
             <th mat-header-cell>Added Expences</th>
             <tr>
                 <ol class="data">
                     <li *ngFor="let d of data; let i=index;">
-                      <!-- {{d.desc}} &nbsp;<button class="ud" (click)="getExpenDetails(d._id)">Details</button>&nbsp; -->
+                     
                         <td >
                             <mat-label> {{d.desc}}</mat-label>
                         </td>
@@ -51,5 +51,24 @@
                     </li>
                   </ol>
             </tr>
-          </table>
+          </table> -->
+          <table  border="2">
+              <th>Added Expences</th>
+              <tr>
+                  <ol class="data">
+                      <li *ngFor="let d of data; let i=index;">
+                       
+                          <td >
+                              <label> {{d.desc}}</label>
+                          </td>
+                          <td>
+                              <button mat-button class="ud" [routerLink]="['/home/expdetail', d._id]">Details</button>
+                          </td>
+                          <td>
+                              <button mat-button class="ud" (click)="deleteExpen(d._id)">Delete</button>
+                          </td>
+                      </li>
+                    </ol>
+              </tr>
+            </table>
     </div>

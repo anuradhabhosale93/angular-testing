@@ -2,15 +2,19 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-
+import { Store } from '@ngrx/store';
+import { Logininfo } from '../loginstore/logininfo.model';
+import { Observable } from 'rxjs';
+import * as LoginActions from '../loginstore/loginstateaction.action'; 
+import { AppState } from '../loginstore/logininfo.state';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
- 
-  constructor(private auth:AuthService,public route:Router, public toast:ToastrService) { }
+  
+  constructor(private auth:AuthService,public route:Router, public toast:ToastrService,public store:Store<AppState>) { }
   logindata={ usernameOrEmail:'',password:''};
 
   private extractData(res: Response) {
@@ -20,6 +24,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
       
+      this.store.dispatch(new LoginActions.LoginstateAction({username:this.logindata.usernameOrEmail,
+        display:false}))
   }
 
   loginuser()
@@ -28,10 +34,10 @@ export class LoginComponent implements OnInit {
       this.auth.login(this.logindata).subscribe(data=>{
         localStorage.setItem('token',data.token);
         this.toast.success("Login Successfully","Success");
-      //   console.log("response of="+JSON.stringify(data.token));
-      //  console.log('token get success='+localStorage.getItem('token'));
-        //this.auth.display=true;
-        this.auth.username=data.username;
+        this.store.dispatch(new LoginActions.LoginstateAction({username:this.logindata.usernameOrEmail,
+          display:true}));
+
+       console.log(this.store.select('login'));
        this.route.navigate(['/home']);
 
       },err=>{

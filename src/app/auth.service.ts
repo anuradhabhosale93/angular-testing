@@ -12,7 +12,7 @@ import { Observable, of } from 'rxjs';
 export class AuthService {
  
   constructor(public ht:HttpClient) { }
-  public username='';
+ 
   
   private extractData(res: Response) {
     let body = res;

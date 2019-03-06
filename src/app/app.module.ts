@@ -19,7 +19,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button'
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
+import { reducer } from './loginstore/loginstate.reducer';
+ import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import {MatTableModule} from '@angular/material/table';
   imports: [
     BrowserModule,
     HttpClientModule,
+     StoreModule.forRoot({login:reducer}),
+    
     AppRoutingModule,
     FormsModule,
     OwlDateTimeModule,
@@ -43,6 +47,7 @@ import {MatTableModule} from '@angular/material/table';
     BrowserAnimationsModule,
     MatInputModule,
     MatButtonModule,
+    MatTableModule,
     ToastrModule.forRoot({
       timeOut: 1500,
       positionClass: 'toast-bottom-right',
