@@ -6,40 +6,23 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { Route, Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { HomeComponent } from './home/home.component';
 import { AuthService } from './auth.service';
-import { ExpenceService } from './expence.service';
-import { ExpdetailComponent } from './expdetail/expdetail.component';
-import { ExpeditComponent } from './expedit/expedit.component';
-import { NgnavComponent } from './ngnav/ngnav.component';
-import { PagenotfoundcomponentComponent } from './pagenotfoundcomponent/pagenotfoundcomponent.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button'
 import { MatTableModule } from '@angular/material/table';
-import { reducer } from './loginstore/loginstate.reducer';
- import { StoreModule } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent,
-    HomeComponent,
-    ExpdetailComponent,
-    ExpeditComponent,
-    NgnavComponent,
-    PagenotfoundcomponentComponent,
-
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-     StoreModule.forRoot({login:reducer}),
-    
     AppRoutingModule,
     FormsModule,
     OwlDateTimeModule,
@@ -55,8 +38,8 @@ import { reducer } from './loginstore/loginstate.reducer';
     })
   ],
   providers:
-  [AuthService,ExpenceService],
-  exports: [RouterModule],
+    [AuthService],
+  exports: [RouterModule,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

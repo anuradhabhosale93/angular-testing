@@ -1,25 +1,20 @@
-
 <div class="main">
-    <mat-label>LOGIN</mat-label>
+    LOGIN
     <br><br>
 
-<div>
-    <mat-label>Username:</mat-label>
-    <br>
-    <mat-form-field>
-        <input matInput type="text" class="inp" [(ngModel)]="logindata.usernameOrEmail" required>
-    </mat-form-field> 
-      <br><br>
-   
-      <mat-label>Password:</mat-label><br>
- <mat-form-field>
-    <input matInput type="password" class="inp" [(ngModel)]="logindata.password" required>
- </mat-form-field>
-    <!-- <input matInput type="password" class="inp" [(ngModel)]="logindata.password" required><br><br> -->
-    <br><br>
-    <button mat-button class="btn" (click)="loginuser()">SignIn</button> &nbsp;
-    <!-- <mat-button matButton class="btn" [routerLink]="['/register']">Register</mat-button> -->
-    <button mat-button class="btn" [routerLink]="['/register']">Register</button>
-    
-</div>
+    <div>
+        Username:
+        <br>
+
+        <input type="text" class="inp" [(ngModel)]="logindata.usernameOrEmail" required>
+        <br><br>
+
+        Password:<br>
+        <input type="password" class="inp" [(ngModel)]="logindata.password" required>
+
+        <!-- <input matInput type="password" class="inp" [(ngModel)]="logindata.password" required><br><br> -->
+        <br><br>
+        <button class="btn" (click)="loginuser()">SignIn</button> &nbsp;
+        <!-- <mat-button matButton class="btn" [routerLink]="['/register']">Register</mat-button> -->
+    </div>
 </div>

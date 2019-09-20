@@ -1,11 +1,7 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { HomeComponent } from './home/home.component';
-import { ExpdetailComponent } from './expdetail/expdetail.component';
-import { ExpeditComponent } from './expedit/expedit.component';
-import { PagenotfoundcomponentComponent } from './pagenotfoundcomponent/pagenotfoundcomponent.component';
+
 // const appRoutes: Routes=[
 //   {path:'',component:LoginComponent},
 //   {path:'register',component:RegisterComponent},
@@ -16,17 +12,13 @@ import { PagenotfoundcomponentComponent } from './pagenotfoundcomponent/pagenotf
 //   ]
 // }];
 
-const appRoutes: Routes=[
-  {path:'',component:LoginComponent},
-  {path:'register',component:RegisterComponent},
-  {path:'home',component:HomeComponent},
-  {path:'home/expdetail/:id',component:ExpdetailComponent},
-  {path:'home/expdetail/edit/:id',component:ExpeditComponent},
-  { path: '**', component: PagenotfoundcomponentComponent }
+const appRoutes: Routes = [
+  { path: '', component: LoginComponent },
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes),RouterModule.forChild(appRoutes)],
+  imports: [RouterModule.forRoot(appRoutes), RouterModule.forChild(appRoutes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
