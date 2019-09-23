@@ -14,7 +14,7 @@
 
         <!-- <input matInput type="password" class="inp" [(ngModel)]="logindata.password" required><br><br> -->
         <br><br>
-        <button class="btn" (click)="loginuser()">SignIn</button> &nbsp;
+        <button class="btn" [disabled]="clicked" (click)="loginuser()" clicked=true>SignIn</button> &nbsp;
         <!-- <mat-button matButton class="btn" [routerLink]="['/register']">Register</mat-button> -->
     </div>
 </div>
