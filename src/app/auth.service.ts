@@ -22,20 +22,13 @@ export class AuthService {
 
   newRegister(regData): Observable<any> {
     console.log(regData);
-    return this.ht.post<any>('http://localhost:3010/api/auth/signup', regData).pipe(
+    return this.ht.post<any>('http://localhost:3090/auth/signup', regData).pipe(
       map((regData) => console.log(`added w/ id=${regData.id}`)),
     );
   }
 
   login(logindata): Observable<any> {
     console.log("call2");
-    console.log(logindata);
-
-    return this.ht.post<any>('http://localhost:3010/api/auth/signin', logindata).pipe(map((this.extractData)));
+    return this.ht.post<any>('http://localhost:3090/auth/signin', logindata).pipe(map((this.extractData)));
   }
-
-
-
-
-
 }

@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private auth: AuthService, public route: Router, ) { }
   logindata = { usernameOrEmail: '', password: '' };
+  clicked = false;
 
   private extractData(res: Response) {
     let body = res;
@@ -28,10 +29,12 @@ export class LoginComponent implements OnInit {
     this.auth.login(this.logindata).subscribe(data => {
       localStorage.setItem('token', data.token);
       console.log("success");
+      this.clicked = true;
       // this.toast.success("Login Successfully", "Success");
 
     }, err => {
       if (err.status == 422 || err.status == 401) {
+
         // this.toast.error("UserName or password incorrect", "Error!");
       }
       else if (err.status == 500) {

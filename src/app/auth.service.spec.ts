@@ -1,28 +1,35 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { HttpClientModule } from '@angular/common/http';
 
 describe('AuthService', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [HttpClientTestingModule],
-    providers: [AuthService]
-  }));
+  let injector: TestBed;
+  let service: AuthService;
+  let httpMock: HttpTestingController;
 
-  it('should be created', () => {
-    const service: AuthService = TestBed.get(AuthService);
-    expect(service).toBeTruthy();
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [AuthService],
+    });
+    injector = getTestBed();
+    service = injector.get(AuthService);
+    httpMock = injector.get(HttpTestingController);
   });
 
   it('should be call signin api', () => {
     const logindata = { usernameOrEmail: 'anuradhabhosale93@gmail.com', password: 'Anuradha@95' };
-    const service: AuthService = TestBed.get(AuthService);
-    console.log("call1");
-    service.login(logindata).subscribe(result => {
-      console.log(result)
-      expect(result).toBe(true);
+    service.login(logindata).subscribe(data => {
     });
-
+    console.log("ho run api service");
+    const req = httpMock.expectOne('http://localhost:3090/auth/signin');
+    expect(req.request.method).toBe('POST');
   });
+
+  afterEach(() => {
+    httpMock.verify();
+  });
+
 });
